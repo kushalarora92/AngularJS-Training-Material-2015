@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>Demo 1 Angular</title>
+	<script type="text/javascript" src="../libs/angular.min.js"></script>
+
+
+</head>
+<body ng-controller="NameCtrl">
+
+<!-- 3 --> First Name: <input type="text" ng-model="fname" />
+<!-- 3 --> Last Name: <input type="text" ng-model="lname" />
+<!-- 3 --> Hello {{fname}} {{lname}}
+
+<!-- 5 --> <script>
+				var myapp = angular.module("myapp",[]);
+				
+				myapp.controller("NameCtrl", function($scope, $timeout){
+						$scope.fname = "Kushal";
+						//$scope.lname = "Arora";
+
+						$scope.$watch("lname", function(newVal, oldVal){
+							console.log("new val is:" + newVal);
+						})
+
+						/*$timeout(function(){
+							$scope.lname = "Arora";
+							//$scope.$apply();
+						},1000);*/
+
+						setTimeout(function(){
+							$scope.lname = "Arora";
+							$scope.$apply();
+						},1000)
+				});
+				
+			</script>
+
+</body>
+</html>

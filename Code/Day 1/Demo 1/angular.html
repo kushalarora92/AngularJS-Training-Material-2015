@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>Demo 1 Angular</title>
+	<script type="text/javascript" src="../libs/angular.min.js"></script>
+
+
+</head>
+<body ng-controller="NameCtrl">
+<!-- 1 -->	Name: <input type="text" ng-model="name"/>
+<!-- 1 -->	Hello {{name}}
+
+			<br>
+<!-- 2 --> Name 2: <input type="text" ng-model="name" />
+<!-- 2 --> Name 3: <input type="text" ng-model="name" />
+			
+			<br><br>
+<!-- 3 --> First Name: <input type="text" ng-model="fname" />
+<!-- 3 --> Last Name: <input type="text" ng-model="lname" />
+<!-- 3 --> Hello {{fname}} {{lname}}
+
+<!-- 6 -->  <ul>
+				<li ng-repeat="name in names">{{name}}</li>
+			</ul>
+
+
+<!-- 4 -->  <script>/*No Longer Supoorted from Angular 1.3+ */
+				function NameCtrl($scope){
+					$scope.fname = "Kushal";
+					$scope.lname = "Arora";
+				}
+			</script>
+
+<!-- 5 --> <script>
+				var myapp = angular.module("myapp",[]);
+				
+				myapp.controller("NameCtrl", function($scope, $timeout){
+						$scope.fname = "Kushal";
+						//$scope.lname = "Arora";
+
+						$scope.$watch("lname", function(newVal, oldVal){
+							console.log("new val is:" + newVal);
+						})
+
+						$timeout(function(){
+							$scope.lname = "Arora";
+							//$scope.$apply();
+						},1000);
+/* 6 */
+						$scope.names = ["Tim","John","Harry"];
+
+				});
+				
+			</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>Day 2 Angular</title>
+	<script type="text/javascript" src="../libs/angular.min.js"></script>
+
+
+</head>
+<body ng-controller="NameCtrl">
+			
+	<ul>
+		<li ng-repeat="name in names">
+			{{name}}
+			<a href="" ng-click="removeName(name)">remove</a>
+		</li>
+	</ul>
+
+	<form ng-submit="addName()">
+		<input type="text" ng-model="enteredName"/>
+		<input type="submit" value="add">
+	</form>
+
+	<script>
+		var myapp = angular.module("myapp",[]);
+			
+		myapp.controller("NameCtrl", function($scope, $timeout){		
+			$scope.names = ["Tim","John","Harry"];
+
+			$scope.addName = function(){
+				$scope.names.push($scope.enteredName);
+				$scope.enteredName = "";
+			};
+
+			$scope.removeName = function(name){
+				var i = $scope.names.indexOf(name);
+				$scope.names.splice(i,1);
+			};
+		});
+				
+	</script>
+
+<!-- 
+	1. Add Names
+	2. Remove Text Field Data
+	3. Delete Name
+
+ -->
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Demo 1 Javascript</title>
+</head>
+<body>
+	Name: <input type="text" id="myInputBox" />
+	Hello <span id="mySpanText"></span>
+	<script>
+		var textInputElement = document.getElementById("myInputBox"),
+			nameSpanText = document.getElementById("mySpanText");
+
+		textInputElement.addEventListener("keyup", function(){
+			var text = textInputElement.value;
+			nameSpanText.innerHTML = text;
+		});
+	</script>
+</body>
+</html>

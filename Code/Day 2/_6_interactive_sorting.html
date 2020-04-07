@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>Day 2 Angular</title>
+	<script type="text/javascript" src="../libs/angular.min.js"></script>
+
+
+</head>
+<body ng-controller="CountriesCtrl">
+
+	Search: <input type="text" ng-model="query">
+
+	<table>
+		<tr>
+			<th><a href="" ng-click="sortField='name';reverse=!reverse">Country</a></th>
+			<th><a href="" ng-click="sortField='population';reverse=!reverse">Population</a></th>
+		</tr>
+		<tr ng-repeat="country in countries | filter:query | orderBy:sortField:reverse">
+			<td>{{country.name}}</td>
+			<td>{{country.population | number}}</td>
+		</tr>
+	</table>
+
+	<script>
+		var myapp = angular.module("myapp",[]);
+			
+		myapp.controller("CountriesCtrl", ["$scope", "$http", function($scope, $http){		
+			$http.get("https://jsonblob.com/api/jsonBlob/5558986de4b0d557cf925fb6").success(function(data){
+				$scope.countries = data;
+			});
+			$scope.sortField = 'name';
+			$scope.reverse = false;
+		}]);
+				
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<meta charset="utf-8">
+	<title>Day 2 Angular</title>
+	<script type="text/javascript" src="../libs/angular.min.js"></script>
+
+
+</head>
+<body ng-controller="CountriesCtrl">
+	
+	<ul>
+		<li ng-repeat="country in countries">Country: {{country.name}} -- Population: {{country.population}}</li>
+	</ul>
+
+	<table>
+		<tr>
+			<th>Country</th>
+			<th>Population</th>
+		</tr>
+		<tr ng-repeat="country in countries">
+			<td>{{country.name}}</td>
+			<td>{{country.population}}</td>
+		</tr>
+	</table>
+
+	<script>
+		var myapp = angular.module("myapp",[]);
+			
+		myapp.controller("CountriesCtrl", function($scope){		
+			$scope.countries = [
+				{"name": "China", "population": "1369880000"},
+				{"name": "India", "population": "1271310000"},
+				{"name": "United States of America", "population": "321013000"}
+			];
+		});
+				
+	</script>
+</body>
+</html>

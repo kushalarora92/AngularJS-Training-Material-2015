@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Demo 1 JQuery</title>
+	<script type="text/javascript" src="../libs/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	Name: <input type="text" id="myInputBox" />
+	Hello <span id="mySpanText"></span>
+	<script>
+		/*var textInputElement = $("#myInputBox"),
+			nameSpanText = $("#mySpanText");
+
+		textInputElement.on("keyup", function(){
+			var text = textInputElement.val();
+			nameSpanText.html(text);
+		});
+		*/
+		$("#myInputBox").on("keyup", function(){
+			$("#mySpanText").html($("$myInputBox").val());
+		})
+	</script>
+</body>
+</html>
